@@ -1,0 +1,38 @@
+[
+    {
+        "userid": "1231",
+        "email": "david@hotmail.com",
+        "name": "David",
+        "lname": "Gonzalez",
+        "curp": "fadsadf",
+        "rfc": "dasdfafas",
+        "actions": "A"
+    },
+    {
+        "userid": "4562",
+        "email": "diego@hotmail.com",
+        "name": "Diego",
+        "lname": "Ramirez",
+        "curp": "DIEGOCURP",
+        "rfc": "DIEGORFC",
+        "actions": "B"
+    },
+    {
+        "userid": "1231",
+        "email": "david@hotmail.com",
+        "name": "David",
+        "lname": "Gonzalez",
+        "curp": "fadsadf",
+        "rfc": "dasdfafas",
+        "actions": "A"
+    },
+    {
+        "userid": "1231",
+        "email": "david@hotmail.com",
+        "name": "David",
+        "lname": "Gonzalez",
+        "curp": "fadsadf",
+        "rfc": "dasdfafas",
+        "actions": "A"
+    }
+]

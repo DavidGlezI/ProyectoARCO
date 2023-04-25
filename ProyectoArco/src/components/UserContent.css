@@ -1,0 +1,9 @@
+
+
+.UserContent{
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    margin-top: 50px;
+
+}
