@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, Outlet, Link } from "react-router-dom"; 
+import './Acceso.css'
 
 function Acceso(){
    const params = useParams();
@@ -20,13 +21,12 @@ function Acceso(){
 
 
     return (
-        <>
-        <div>
-            <div>HOLA {userId}</div>
+        <> 
+        <div className="box">
             {userData.map( data => {
                 return(
                         <div className='userAcceso'>
-                            <div>Datos de {data.user_fname} {data.user_first_lname} ID = {data.user_id}</div>
+                            <div className="intro">Datos de {data.user_fname} {data.user_first_lname} {data.user_second_lname}</div>
                             <div className="datosPersonales">
 
                                 <div>
@@ -38,7 +38,7 @@ function Acceso(){
                                 </div>
 
                                 <div>
-                                  Nacionalidad: {data.nationality}  Estado de nacimiento: {data.state_of_birth}
+                                  Nacionalidad: {data.nationality}    Estado de nacimiento: {data.state_of_birth}
                                 </div>
 
                                 <div>
@@ -46,11 +46,11 @@ function Acceso(){
                                 </div>
 
                                 <div>
-                                  Telefono: {data.phone_number} Curp: {data.curp}
+                                  Telefono: {data.phone_number}  Curp: {data.curp}
                                 </div>
 
                                 <div>
-                                  Email: {data.email}
+                                  E-mail: {data.email}
                                 </div>
 
                                 <div>
@@ -63,7 +63,7 @@ function Acceso(){
 
 
                                 <div className="Direccion">
-                                    Direccion
+                                    <div className="Dir">Direccion</div>
                                     <div>
                                       Pais: {data.country} Estado: {data.state} Ciudad: {data.city}
                                     </div>
@@ -83,19 +83,16 @@ function Acceso(){
                 )
                 
             })}
+              <div className="botones">
+              <button>
+                  Generar PDF
+              </button>
 
-            <button>
-                Generar PDF
-            </button>
-
-            <button>
-              <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
-            </button>
-
-            
-
+              <button>
+                <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
+              </button>
+              </div>
             </div>
-            
             </>
     )
 }

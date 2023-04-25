@@ -82,7 +82,6 @@ getUserAccesoId= async (req, res)=>{
   FROM users
   INNER JOIN addresses on addresses.user_id = users.user_id
   WHERE users.user_id = ${id}; `);
-  console.log(id);
   res.json(response);
   res.end();
 }

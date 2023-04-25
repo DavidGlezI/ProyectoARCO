@@ -5,7 +5,15 @@ import ArcoBtn from './ArcoBtn';
 export function UserContent(){
     const [userData, setUserData] = useState([]);
 
-    
+    const ColoredLine = ({ color }) => (
+        <hr
+            style={{
+                color: color,
+                backgroundColor: color,
+                height: 1
+            }}
+        />
+    );
 
     useEffect(()=>{
         async function dataFetch(){
@@ -17,9 +25,10 @@ export function UserContent(){
 
 
     return(
-        <div >
+        <div className='box'>
             {userData.map( data => {
                 return(
+                    <>
                         <div className='UserContent'>
                             <div >
                                 {data.user_id}
@@ -36,12 +45,15 @@ export function UserContent(){
                             <div >
                                 {data.curp}
                             </div>
-                            <div>
+                            <div className='btn'>
                                 <ArcoBtn userId = {data.user_id}/>
                             </div>
                         </div>
+                        <ColoredLine color="blue" />
+                        </>     
                 )
             })}
+            
         </div>
     )
 }

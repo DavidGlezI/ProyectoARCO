@@ -50,7 +50,7 @@ export default function ArcoBtn({userId}) {
 
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 100 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Right</InputLabel>
         <Select
