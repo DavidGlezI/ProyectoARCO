@@ -48,9 +48,12 @@ export function UserContent(){
                             <div className='btn'>
                                 <ArcoBtn userId = {data.user_id}/>
                             </div>
+                            
+                            
                         </div>
-                        <ColoredLine color="blue" />
-                        </>     
+                        <ColoredLine color="blue"/>
+                        
+                    </>     
                 )
             })}
             

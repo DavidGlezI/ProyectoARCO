@@ -6,10 +6,10 @@
 .UserContent{
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 120px;
     margin-top: 50px;
     height: 100%;
-    
 }
 
 .btn{
