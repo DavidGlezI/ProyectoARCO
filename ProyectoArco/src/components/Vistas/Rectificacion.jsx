@@ -7,15 +7,33 @@ function Rectificacion(){
    const params = useParams();
    const userId= params.userId  
 
-   const [userData, setUserData] = useState([]);
+   const [data, setUserData] = useState({});
+   const [dataTemp, setDataTemp] = useState({});
    const [edit, setEdit] = useState('');
 
     
+
+   
+
+   function handleClick(e){
+    const newdata={...data}
+    newdata[e.target.id] = e.target.value
+    setUserData(newdata)
+    console.log(newdata)
+   }
+
+   function handleSubmit(e){
+    e.preventDefault();
+    fetch(`/api/userA/${userId}`, {method:"PUT",   body:data})
+    .then(console.log("DONE"));
+   }
+
 
     useEffect(()=>{
         async function dataFetch(){
             const data = await(await fetch(`/api/userA/${userId}`)).json();
             setUserData(data);
+            setDataTemp(data);
         }
         dataFetch();
     }, [])
@@ -24,11 +42,9 @@ function Rectificacion(){
     return (
         <> 
         <div className="box">
-            <form action="">
-            {userData.map( data => {
-                return(
+            <form onSubmit={(e)=> handleSubmit(e)}>
                         <div className='userAcceso'>
-                            <div className="intro">Datos de {data.user_fname} {data.user_first_lname} {data.user_second_lname}</div>
+                            <div className="intro">Datos de {dataTemp.user_fname} {dataTemp.user_first_lname} {dataTemp.user_second_lname}</div>
                             <div className="datosPersonales">
 
                                 <div className="primeraMitad">
@@ -37,8 +53,10 @@ function Rectificacion(){
                                             Nombre:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.user_fname}
-                                            onChange={e => setEdit(e.target.value)}
+                                            id="user_fname"
+                                            value={data.user_fname}
+                                            placeholder={data.user_fname}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -48,8 +66,11 @@ function Rectificacion(){
                                             Primer Apellido:
                                         <div>
                                             <input type="text"
+                                            id="user_first_lname"
+                                            value={data.user_first_lname}
+                                            placeholder={data.user_first_lname} 
                                             defaultValue={data.user_first_lname} 
-                                            onChange={e => setEdit(e.target.value)}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -59,8 +80,12 @@ function Rectificacion(){
                                             Segundo Apellido:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.user_second_lname}
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="user_second_lname"
+                                            value={data.user_second_lname}
+                                            placeholder={data.user_second_lname}
+                                            defaultValue={data.user_second_lname} 
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -69,9 +94,13 @@ function Rectificacion(){
                                     <label className="tipoDato">
                                             Fecha de nacimiento:
                                         <div>
-                                            <input type="text"
+                                            <input type="date"
+
+                                            id="born_date"
+                                            value={data.born_date}
+                                            placeholder={data.born_date}
                                             defaultValue={data.born_date}
-                                            onChange={e => setEdit(e.target.value)}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -81,8 +110,14 @@ function Rectificacion(){
                                             Nacionalidad:
                                         <div>
                                             <input type="text"
+
+                                            id="nationality"
+                                            value={data.nationality}
+                                            placeholder={data.nationality} 
                                             defaultValue={data.nationality} 
-                                            onChange={e => setEdit(e.target.value)}
+                                            onChange={e => handleClick(e)}
+
+                                            
                                             />
                                     </div>
                         
@@ -92,8 +127,14 @@ function Rectificacion(){
                                             Estado de nacimiento:
                                         <div>
                                             <input type="text"
-                                            defaultValue= {data.state_of_birth}
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="state_of_birth"
+                                            value={data.state_of_birth}
+                                            placeholder={data.state_of_birth}
+                                            defaultValue={data.state_of_birth}
+                                            onChange={e => handleClick(e)}
+
+                                            
                                             />
                                     </div>
                         
@@ -103,8 +144,12 @@ function Rectificacion(){
                                             Genero:
                                         <div>
                                             <input type="text"
+
+                                            id="gender"
+                                            value={data.gender}
+                                            placeholder={data.gender}
                                             defaultValue={data.gender}
-                                            onChange={e => setEdit(e.target.value)}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -114,8 +159,12 @@ function Rectificacion(){
                                             Telefono:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.phone_number} 
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="phone_number"
+                                            value={data.phone_number}
+                                            placeholder={data.phone_number}
+                                            defaultValue={data.phone_number}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -125,8 +174,13 @@ function Rectificacion(){
                                             Curp:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.curp} 
-                                            onChange={e => setEdit(e.target.value)}
+
+
+                                            id="curp"
+                                            value={data.curp}
+                                            placeholder={data.curp}
+                                            defaultValue={data.curp}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -136,8 +190,12 @@ function Rectificacion(){
                                             E-mail:
                                         <div>
                                             <input type="text"
+
+                                            id="email"
+                                            value={data.email}
+                                            placeholder={data.email}
                                             defaultValue={data.email}
-                                            onChange={e => setEdit(e.target.value)}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -151,8 +209,12 @@ function Rectificacion(){
                                             Actividad Economica:
                                         <div>
                                             <input type="text"
+
+                                            id="economic_activity"
+                                            value={data.economic_activity}
+                                            placeholder={data.economic_activity}
                                             defaultValue={data.economic_activity}
-                                            onChange={e => setEdit(e.target.value)}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                         
@@ -162,8 +224,12 @@ function Rectificacion(){
                                             Es cliente:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.is_client} 
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="is_client"
+                                            value={data.is_client}
+                                            placeholder={data.is_client}
+                                            defaultValue={data.is_client}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                                     </label>
@@ -172,8 +238,12 @@ function Rectificacion(){
                                             Pais:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.country} 
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="country"
+                                            value={data.country}
+                                            placeholder={data.country}
+                                            defaultValue={data.country}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                                     </label>
@@ -182,8 +252,12 @@ function Rectificacion(){
                                             Estado:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.state} 
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="state"
+                                            value={data.state}
+                                            placeholder={data.state}
+                                            defaultValue={data.state}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                                     </label>
@@ -192,8 +266,12 @@ function Rectificacion(){
                                             Ciudad:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.city} 
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="city"
+                                            value={data.city}
+                                            placeholder={data.city}
+                                            defaultValue={data.city}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                                     </label>
@@ -202,8 +280,12 @@ function Rectificacion(){
                                             Colonia:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.neighborhood} 
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="neighborhood"
+                                            value={data.neighborhood}
+                                            placeholder={data.neighborhood}
+                                            defaultValue={data.neighborhood}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                                     </label>
@@ -212,8 +294,12 @@ function Rectificacion(){
                                             Codigo Postal:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.zip_code} 
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="zip_code"
+                                            value={data.zip_code}
+                                            placeholder={data.zip_code}
+                                            defaultValue={data.zip_code}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                                     </label>
@@ -222,8 +308,12 @@ function Rectificacion(){
                                             Calle:
                                         <div>
                                             <input type="text"
-                                            defaultValue={data.street} 
-                                            onChange={e => setEdit(e.target.value)}
+
+                                            id="street"
+                                            value={data.street}
+                                            placeholder={data.street}
+                                            defaultValue={data.street}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                                     </label>
@@ -233,8 +323,12 @@ function Rectificacion(){
                                             Numero ext/int
                                         <div>
                                             <input type="text"
+
+                                            id="ext_numbero"
+                                            value={data.ext_number}
+                                            placeholder={data.ext_number}
                                             defaultValue={data.ext_number}
-                                            onChange={e => setEdit(e.target.value)}
+                                            onChange={e => handleClick(e)}
                                             />
                                     </div>
                                     </label>
@@ -242,15 +336,12 @@ function Rectificacion(){
                                 
                             </div>
                         </div>
-                )
-                
-            })}
               <div className="botones">
-              <button type="sumbit">
+              <button type="submit">
                   Modificar Datos
               </button>
 
-              <button type="reset">
+              <button type="reset" onClick={()=>{setUserData(dataTemp)}}>
                 Reset
               </button>
 

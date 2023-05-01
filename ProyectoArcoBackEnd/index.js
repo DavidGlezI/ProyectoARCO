@@ -11,7 +11,7 @@ const PORT = 3001;
 
 const app = express();
 
-app.use(bodyParser.json());
+
 
 // endpoints
 
@@ -29,6 +29,10 @@ app.post("/api/characters", (req, res)=>{
     res.sendStatus(200);
 
 })
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.listen(PORT, ()=>{
     console.log(`Server listening on ${PORT}`);
@@ -82,9 +86,70 @@ getUserAccesoId= async (req, res)=>{
   FROM users
   INNER JOIN addresses on addresses.user_id = users.user_id
   WHERE users.user_id = ${id}; `);
-  res.json(response);
+  res.json(response[0]);
   res.end();
 }
+
+
+putUserAccesoId= async (req, res)=>{
+    const {id} = req.params;
+    const {user_fname,
+        user_first_lname,
+        user_second_lname,
+        born_date,
+        nationality,
+        state_of_birth,
+        economic_activity,
+        curp,
+        gender,
+        phone_number,
+        email,
+        is_client,
+        country,
+        state,
+        city,
+        neighborhood,
+        zip_code,
+        street,
+        ext_number,
+        int_number} = req.body;
+        
+    const response = await db_query(`
+    UPDATE users
+        SET
+        user_fname = "${user_fname}",
+        user_first_lname = "${user_first_lname}",
+        user_second_lname = "${user_second_lname}",
+        born_date = "${born_date}",
+        nationality  = "${nationality}",
+        state_of_birth = "${state_of_birth}",
+        economic_activity = "${economic_activity}",
+        curp = "${curp}",
+        gender = "${gender}",
+        phone_number = "${phone_number}",
+        email = "${email}",
+        is_client = "${is_client}"
+        WHERE users.user_id = ${id}; 
+        
+         `
+    );
+    const response2 = await db_query(`
+    UPDATE addresses
+        SET
+        country = "${country}",
+        state = "${state}",
+        city = "${city}",
+        neighborhood= "${neighborhood}",
+        zip_code = "${zip_code}",
+        street = "${street}",
+        ext_number = "${ext_number}",
+        int_number  = ${JSON.stringify(int_number || null)}
+        WHERE addresses.user_id = ${id};
+        `);
+
+    res.json(response[0]);
+    res.end();
+  }
 
 getUser = async (req, res)=>{
     const {id} = req.params;
@@ -98,6 +163,8 @@ getUser = async (req, res)=>{
 app.get("/api/users", getUsers);
 app.get("/api/userA/:id", getUserAccesoId);
 app.get("/api/user/:id", getUser);
+
+app.put("/api/userA/:id", putUserAccesoId);
 
 
 
