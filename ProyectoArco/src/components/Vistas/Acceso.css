@@ -4,14 +4,20 @@
     align-items: center;
     justify-items: center;
     margin-top: 70px;
-
 }
 
 .datosPersonales{
     display: grid;
     justify-items: center;
+    align-items: center;
     gap: 30px;
     margin-top: 20px;
+}
+
+.info{
+    display: grid;
+    text-align: center;
+    gap: 20px;
 }
 
 .intro{

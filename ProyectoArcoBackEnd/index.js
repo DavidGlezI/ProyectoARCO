@@ -72,7 +72,17 @@ function db_query(query){
 
 
 getUsers = async (req, res)=>{
-    const response = await db_query("SELECT user_id, email, user_fname, user_first_lname, curp FROM users; ");
+    const {search, busqueda} = req.query
+    const response = await db_query(`
+        SELECT user_id, email, user_fname, user_first_lname, curp FROM users 
+
+        WHERE (
+            TRUE
+            ${search == undefined ? "" : ` AND INSTR(users.curp, ${JSON.stringify(search)})`}
+        )
+        ORDER BY user_fname ${busqueda == "1" ? "asc" : "desc"}
+        `
+        );
     res.json(response);
     res.end();
 }
@@ -93,7 +103,7 @@ getUserAccesoId= async (req, res)=>{
 
 putUserAccesoId= async (req, res)=>{
     const {id} = req.params;
-    const {user_fname,
+    let {user_fname,
         user_first_lname,
         user_second_lname,
         born_date,
@@ -113,6 +123,9 @@ putUserAccesoId= async (req, res)=>{
         street,
         ext_number,
         int_number} = req.body;
+
+        //born_date = Date(born_date).toString();
+        born_date= String(born_date).substring(0,10);
         
     const response = await db_query(`
     UPDATE users

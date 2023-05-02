@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useParams, Outlet, Link } from "react-router-dom"; 
+import { useParams, Outlet, Link, json, useNavigate, Navigate } from "react-router-dom"; 
 import './Rectificacion.css'
 
 function Rectificacion(){
@@ -12,7 +12,7 @@ function Rectificacion(){
    const [edit, setEdit] = useState('');
 
     
-
+   const navigate = useNavigate();
    
 
    function handleClick(e){
@@ -24,8 +24,8 @@ function Rectificacion(){
 
    function handleSubmit(e){
     e.preventDefault();
-    fetch(`/api/userA/${userId}`, {method:"PUT",   body:data})
-    .then(console.log("DONE"));
+    fetch(`/api/userA/${userId}`, {method:"PUT",   body:JSON.stringify(data), headers:{"Content-Type":"application/json"}})
+    .then(navigate("/"));
    }
 
 
@@ -38,7 +38,8 @@ function Rectificacion(){
         dataFetch();
     }, [])
 
-
+    
+    
     return (
         <> 
         <div className="box">
@@ -97,7 +98,7 @@ function Rectificacion(){
                                             <input type="date"
 
                                             id="born_date"
-                                            value={data.born_date}
+                                            value={data.born_data}
                                             placeholder={data.born_date}
                                             defaultValue={data.born_date}
                                             onChange={e => handleClick(e)}

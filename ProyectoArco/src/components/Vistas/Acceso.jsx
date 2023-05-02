@@ -2,13 +2,35 @@
 import { useState, useEffect } from "react";
 import { useParams, Outlet, Link } from "react-router-dom"; 
 import './Acceso.css'
+import PDFContent from "./PDFContent";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 function Acceso(){
    const params = useParams();
    const userId= params.userId  
 
-   const [userData, setUserData] = useState([]);
+   const [userData, setUserData] = useState({});
 
+   const exportPDF =() =>{
+    const input = document.getElementById("box");
+    html2canvas(input, {logging: true, letterRendering: 1, useCORS: true}).then(canvas =>{
+      const imgWidth  = 208;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const imgData = canvas.toDataURL('img/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.save("informacion.pdf");
+    })
+   }
+
+   let cliente = "";
+      if(userData.is_client === 1){
+        cliente = "Si"
+      }
+      else{
+        cliente = "No"
+      }
     
 
     useEffect(()=>{
@@ -18,81 +40,79 @@ function Acceso(){
         }
         dataFetch();
     }, [])
+      let born = String(userData.born_date).substring(0,10);
 
-
+      
+      
+    
     return (
         <> 
-        <div className="box">
-            {userData.map( data => {
-                return(
-                        <div className='userAcceso'>
-                            <div className="intro">Datos de {data.user_fname} {data.user_first_lname} {data.user_second_lname}</div>
-                            <div className="datosPersonales">
+        <div className="box" id="box">
+          <div className="intro">Datos de {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}</div>
+              <div className="datosPersonales"> 
 
-                                <div>
-                                  Nombre: {data.user_fname} {data.user_first_lname} {data.user_second_lname}
-                                </div>
-                                
-                                <div>
-                                  Fecha de nacimiento: {data.born_date}
-                                </div>
+                <div className="info">
+                  <div>
+                    Nombre: {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}
+                  </div>
+                                  
+                  <div>
+                    Fecha de nacimiento: {born}
+                  </div>
 
-                                <div>
-                                  Nacionalidad: {data.nationality}    Estado de nacimiento: {data.state_of_birth}
-                                </div>
+                  <div>
+                    Nacionalidad: {userData.nationality}    Estado de nacimiento: {userData.state_of_birth}
+                  </div>
 
-                                <div>
-                                  Genero: {data.gender}
-                                </div>
+                  <div>
+                    Genero: {userData.gender}
+                  </div>
 
-                                <div>
-                                  Telefono: {data.phone_number}  Curp: {data.curp}
-                                </div>
+                  <div>
+                    Telefono: {userData.phone_number}  Curp: {userData.curp}
+                  </div>
 
-                                <div>
-                                  E-mail: {data.email}
-                                </div>
+                  <div>
+                    E-mail: {userData.email}
+                  </div>
 
-                                <div>
-                                  Actividad economica: {data.economic_activity}
-                                </div>
+                  <div>
+                    Actividad economica: {userData.economic_activity}
+                  </div>
 
-                                <div> 
-                                  Es cliente: {data.is_client} 
-                                </div>
+                  <div> 
+                    Es cliente: {cliente }
+                  </div>
+                </div>
 
-
-                                <div className="Direccion">
-                                    <div className="Dir">Direccion</div>
-                                    <div>
-                                      Pais: {data.country} Estado: {data.state} Ciudad: {data.city}
-                                    </div>
-
-                                    <div>
-                                      Colonia: {data.neighborhood} Codigo Postal: {data.zip_code}
-                                    </div>
-
-                                    <div>
-                                      Calle: {data.country} Numero ext/int: {data.ext_number}
-                                    </div>
-
-                                </div>
-                                
-                            </div>
-                        </div>
-                )
-                
-            })}
-              <div className="botones">
-              <button>
-                  Generar PDF
-              </button>
-
-              <button>
-                <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
-              </button>
               </div>
-            </div>
+
+              <div className="Direccion">
+                  <div className="Dir">Direccion</div>
+                    <div>
+                      Pais: {userData.country} Estado: {userData.state} Ciudad: {userData.city}
+                    </div>
+
+                    <div>
+                      Colonia: {userData.neighborhood} Codigo Postal: {userData.zip_code}
+                    </div>
+
+                    <div>
+                       Calle: {userData.country} Numero ext/int: {userData.ext_number}
+                    </div>
+              </div>  
+
+
+              <div className="botones">
+                <button onClick={()=> exportPDF()}>Generar PDF</button>
+                
+
+                <button>
+                  <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
+                </button>
+              </div>
+
+        </div>
             </>
     )
 }

@@ -2,7 +2,7 @@ import './UserContent.css'
 import { useEffect, useState } from 'react';
 import ArcoBtn from './ArcoBtn';
 
-export function UserContent(){
+export function UserContent({curpSearch, busqueda}){
     const [userData, setUserData] = useState([]);
 
     const ColoredLine = ({ color }) => (
@@ -17,11 +17,11 @@ export function UserContent(){
 
     useEffect(()=>{
         async function dataFetch(){
-            const data = await(await fetch("/api/users")).json();
+            const data = await(await fetch(`/api/users?search=${curpSearch}&busqueda=${busqueda}`)).json();
             setUserData(data);
         }
         dataFetch();
-    }, [])
+    }, [curpSearch, busqueda])
 
 
     return(
