@@ -29,7 +29,12 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+
+// Tenemos que ver qué usar para esta línea porque no jala
+// así con lo que tenía el profe
+// Sin esta línea jala en local, pero no se ha
+// encontrado la manera de que jale en Heroku
+// app.use(express.static(path.resolve(__dirname, '/ProyectoArco/build')));
 
 
 app.listen(PORT, ()=>{
@@ -48,7 +53,6 @@ if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
         host : "us-cdbr-east-06.cleardb.net",
         user : "b553cca6095053",
         password : "3b8ea0c6",
-        // port : "3306",
         database : "heroku_09dd07483fcb6fb"
     });
 } else { 
