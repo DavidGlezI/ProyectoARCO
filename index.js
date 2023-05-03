@@ -54,7 +54,7 @@ if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
         database : "heroku_09dd07483fcb6fb"
     });
 } else { 
-    var database = mysql.createPool({
+    var database = mysql.createConnection({
         host : "localhost",
         user : "root",
         password : "",
@@ -190,6 +190,12 @@ app.get("/api/user/:id", getUser);
 
 app.put("/api/userA/:id", putUserAccesoId);
 
+
+//  ***** Peticiones get que no manejamos ******
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+})
 
 
 
