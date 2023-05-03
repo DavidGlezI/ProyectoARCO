@@ -1,13 +1,16 @@
 
-
+const path = require("path");
 const express = require("express");
 const fs = require("fs");
 const bodyParser = require("body-parser");
+const mysql = require("mysql");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 // endpoints
 
@@ -27,14 +30,13 @@ const app = express();
 // })
 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+
 
 // Tenemos que ver qué usar para esta línea porque no jala
 // así con lo que tenía el profe
 // Sin esta línea jala en local, pero no se ha
 // encontrado la manera de que jale en Heroku
-// app.use(express.static(path.resolve(__dirname, '/ProyectoArco/build')));
+app.use(express.static(path.resolve(__dirname, '/ProyectoArco/build')));
 
 
 app.listen(PORT, ()=>{
@@ -46,7 +48,7 @@ app.listen(PORT, ()=>{
 
 // SQL
 
-const mysql = require("mysql");
+
 
 if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
     var database = mysql.createPool({
