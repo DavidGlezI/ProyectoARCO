@@ -4,7 +4,7 @@ const express = require("express");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 
 
@@ -46,7 +46,7 @@ app.listen(PORT, ()=>{
 const mysql = require("mysql");
 
 if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
-    var database = mysql.createConnection({
+    var database = mysql.createPool({
         host : "us-cdbr-east-06.cleardb.net",
         user : "b553cca6095053",
         password : "3b8ea0c6",
@@ -54,7 +54,7 @@ if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
         database : "heroku_09dd07483fcb6fb"
     });
 } else { 
-    var database = mysql.createConnection({
+    var database = mysql.createPool({
         host : "localhost",
         user : "root",
         password : "",
@@ -63,16 +63,7 @@ if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
     }); 
 }
 
-function db_query(query){
-    try{
-        return new Promise((resolve, reject) => {
-          connection.query(query, function (err, result) {
-                if (err) throw err;
-                resolve(Object.values(result));
-            });
-        });
-    }catch(except){}
-};
+// module.exports = database;
 
 database.connect((error, s)=>{
     console.log(error);
