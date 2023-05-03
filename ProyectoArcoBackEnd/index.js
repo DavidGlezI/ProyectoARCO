@@ -45,14 +45,34 @@ app.listen(PORT, ()=>{
 
 const mysql = require("mysql");
 
-const database = mysql.createConnection({
-    host : "localhost",
-    user : "root",
-    password : "",
-    port : "3306",
-    database : "kueski"
+if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
+    var database = mysql.createConnection({
+        host : "us-cdbr-east-06.cleardb.net",
+        user : "b553cca6095053",
+        password : "3b8ea0c6",
+        // port : "3306",
+        database : "heroku_09dd07483fcb6fb"
+    });
+} else { 
+    var database = mysql.createConnection({
+        host : "localhost",
+        user : "root",
+        password : "",
+        port : "3306",
+        database : "kueski"
+    }); 
+}
 
-})
+function db_query(query){
+    try{
+        return new Promise((resolve, reject) => {
+          connection.query(query, function (err, result) {
+                if (err) throw err;
+                resolve(Object.values(result));
+            });
+        });
+    }catch(except){}
+};
 
 database.connect((error, s)=>{
     console.log(error);
