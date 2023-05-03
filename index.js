@@ -6,33 +6,31 @@ const bodyParser = require("body-parser");
 
 const PORT = process.env.PORT || 3001;
 
-
-
-
 const app = express();
-
 
 
 // endpoints
 
 
-app.get("/api", (req, res)=>{
-    res.json({
-        message: "Hello from the server side"
-    });
-});
+// app.get("/api", (req, res)=>{
+//     res.json({
+//         message: "Hello from the server side"
+//     });
+// });
 
 
 
-app.post("/api/characters", (req, res)=>{
-    console.log("El cuerpo de la peticion es:", req.body);
-    res.sendStatus(200);
+// app.post("/api/characters", (req, res)=>{
+//     console.log("El cuerpo de la peticion es:", req.body);
+//     res.sendStatus(200);
 
-})
+// })
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(express.static(path.resolve(__dirname, '../client/build')));
+
 
 app.listen(PORT, ()=>{
     console.log(`Server listening on ${PORT}`);
@@ -78,7 +76,7 @@ function db_query(query){
             });
           });
     }catch(except){}
-  }
+}
 
 
 
