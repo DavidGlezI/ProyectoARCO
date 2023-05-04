@@ -9,9 +9,11 @@ function Cancelacion(){
 
    const [userData, setUserData] = useState([]);
 
-   const [modal, setModal] = useState(false);
+   
 
    const navigate = useNavigate();
+
+   const [modal, setModal] = useState(false);
 
 
    const toggleModal = ()=>{

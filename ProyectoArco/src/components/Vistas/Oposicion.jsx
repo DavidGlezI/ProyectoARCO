@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useParams,Outlet, Link } from "react-router-dom"; 
+import { useParams,Outlet, Link, useNavigate } from "react-router-dom"; 
 import '../../styles.css';
 
 function Oposicion(){
@@ -9,10 +9,20 @@ function Oposicion(){
 
    const [userData, setUserData] = useState([]);
 
+   const [modal, setModal] = useState(false);
+   const navigate = useNavigate();
+
+
+   const toggleModal = ()=>{
+    setModal(!modal);
+   }
+
 
    function handleOposicion(){
     fetch(`/api/opuesto/${userId}`, {method:"PUT"})
     fetch(`/api/peticiones/${userId}/O`, {method:"POST"})
+    toggleModal();
+    navigate("/");
 }
     
 
@@ -36,7 +46,7 @@ useEffect(()=>{
 
 return (
     <>
-    <div className="boxOp">
+    <div className="boxOp" style={{filter: modal? 'blur(8px)' : ''}}>
       <div className="introOp">Marcar oposición a {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}</div>
 
       
@@ -96,9 +106,7 @@ return (
             <div className="botonesOp">
 
             
-                <button onClick={handleOposicion}>
-                <Link to={`/`} style={{ textDecoration: 'none'}}>Marcar Oposicion</Link>
-                </button>
+                <button onClick={toggleModal}>Marar Oposición</button>
                 <button> <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link></button>
                 <div className="Notas">
                     <p>Agregar Notas</p>
@@ -107,6 +115,22 @@ return (
             </div>
 
         </div>
+        {modal && (
+                    <div className="modal">
+                        <div className="overlay"></div>
+                        <div className="modal-content">
+                            <h2>ATENCION</h2>
+                            <p>Se marcará como Oposición al usuario y sus datos ya no se 
+                                desplegarán en la página
+                            </p>
+                            
+                        </div>
+                        <button className="confirmar" onClick={handleOposicion}>Confirmar Accion</button>
+                        <button className="cancelar" onClick={toggleModal}>Cancelar</button>
+                            
+                    </div>
+
+                )}
     </>
     )
 }

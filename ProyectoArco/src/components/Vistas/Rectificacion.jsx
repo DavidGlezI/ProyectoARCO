@@ -9,7 +9,8 @@ function Rectificacion(){
 
    const [data, setUserData] = useState({});
    const [dataTemp, setDataTemp] = useState({});
-   const [edit, setEdit] = useState('');
+   
+   
 
     
    const navigate = useNavigate();

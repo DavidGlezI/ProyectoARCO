@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useParams, Outlet, Link } from "react-router-dom"; 
+import { useParams, Outlet, Link, useNavigate } from "react-router-dom"; 
 import '../../styles.css';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -9,8 +9,17 @@ function Acceso(){
    const params = useParams();
    const userId= params.userId  
 
-
    const [userData, setUserData] = useState({});
+
+
+   const [modal, setModal] = useState(false);
+   const navigate = useNavigate();
+
+
+   const toggleModal = ()=>{
+    setModal(!modal);
+
+   }
 
 
 
@@ -23,7 +32,8 @@ function Acceso(){
       const pdf = new jsPDF('p', 'mm', 'a4');
       pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
       pdf.save("informacion.pdf");
-
+      toggleModal();
+      navigate("/");
       
     })
    }
@@ -53,11 +63,10 @@ function Acceso(){
       let born = String(userData.born_date).substring(0,10);
 
       
-      
     
     return (
-        <> 
-        <div className="boxA" id="box">
+        <>
+        <div className="boxA" id="box" style={{filter: modal? 'blur(8px)' : ''}}>
           <div className="intro">Datos de {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}</div>
 
           
@@ -116,7 +125,7 @@ function Acceso(){
 
 
               <div className="botonesA">
-                <button onClick={()=> handleClickPeticion()}>Generar PDF</button>
+                <button onClick={toggleModal}>Generar PDF</button>
                 
 
                 <button>
@@ -125,6 +134,22 @@ function Acceso(){
               </div>
 
         </div>
+
+        {modal && (
+                    <div className="modal">
+                        <div className="overlay"></div>
+                        <div className="modal-content">
+                            <h2>ATENCION</h2>
+                            <p>Se realizará un PDF con la información del usuario
+                            y se creará una petición de derechos ARCO</p>
+                            
+                        </div>
+                        <button className="confirmar" onClick={handleClickPeticion}>Confirmar Accion</button>
+                        <button className="cancelar" onClick={toggleModal}>Cancelar</button>
+                            
+                    </div>
+
+                )}
             </>
     )
 }
