@@ -1,8 +1,6 @@
 
 import { Tab } from '@mui/material';
-import './App.css'
 import { Table } from './components/Table'
-import { UserContent } from './components/UserContent';
 import Acceso from './components/Vistas/Acceso';
 import Cancelacion from './components/Vistas/Cancelacion';
 import Oposicion from './components/Vistas/Oposicion';
@@ -15,7 +13,7 @@ function App() {
   
   return (
   <>
-    <div className="hola">KUESKI TITULO</div>
+    <div className="titulo">KUESKI TITULO</div>
     <BrowserRouter>
             <Routes>
                 <Route path="/" element = {<Table/>}/>

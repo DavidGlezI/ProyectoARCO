@@ -1,0 +1,299 @@
+/* CSS DE APP */
+
+
+.titulo{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+/* CSS DE TABLE */
+
+
+.table_layout{
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+    margin-top: 50px;
+    
+}
+
+/*
+.navbar{
+    
+}
+*/
+.table{
+    display: grid;
+    grid-template-columns: 1200px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* CSS DE USER CONTENT */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.UserContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 120px;
+    margin-top: 50px;
+    height: 100%;
+}
+
+.btnUserContent{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxUserContent{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/* CSS DE RECTIFICACION*/
+
+.boxRect{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin-top: 70px;
+}
+
+.tipoDato{
+    display: flex;
+    gap: 15px;
+}
+
+.introRect{
+    display: grid;
+    justify-items: center;
+    margin-bottom: 40px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.datosPersonalesRect{
+    display: flex;
+    gap: 200px;
+}
+
+
+.primeraMitad{
+    display: grid;
+    gap: 20px;
+}
+
+.segundaMitad{
+    display: grid;
+    gap: 20px;
+}
+
+
+.botonesRect{
+    margin-top: 30px;
+}
+
+
+
+/*CSS DE PETICIONES*/
+
+.infoPeticion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 140px;
+    margin-top: 50px;
+    height: 100%;
+    outline: 1px dashed red;
+    min-width: 1300px;
+}
+
+.petid{
+    margin-left: 70px;
+}
+
+.userid{
+    margin-left: 50px;
+}
+
+.boxPet{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.peticiones_layout{
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+    margin-top: 50px;
+    
+}
+
+
+
+
+/* CSS DE OPOSICION */
+.boxOp{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin-top: 70px;
+}
+
+.datosPersonalesOp{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.infoOp{
+    display: grid;
+    text-align: center;
+    gap: 20px;
+}
+
+.introOp{
+    display: grid;
+    justify-items: center;
+    margin-bottom: 40px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.DirOp{
+   text-decoration: underline;
+}
+
+.DireccionOp{
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+    margin-top: 20px;
+
+}
+
+.botonesOp{
+    margin-top: 30px;
+}
+
+
+/* CSS DE CANCELACION */
+.boxCa{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin-top: 70px;
+}
+
+.datosPersonalesCa{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.infoCa{
+    display: grid;
+    text-align: center;
+    gap: 20px;
+}
+
+.introCa{
+    display: grid;
+    justify-items: center;
+    margin-bottom: 40px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.DirCa{
+   text-decoration: underline;
+}
+
+.DireccionCa{
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+    margin-top: 20px;
+
+}
+
+.botonesCa{
+    margin-top: 30px;
+}
+
+/*
+.NotasCa{
+
+}
+*/
+
+
+/* CSS DE ACCESO */
+.boxA{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin-top: 70px;
+}
+
+.datosPersonalesA{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.infoA{
+    display: grid;
+    text-align: center;
+    gap: 20px;
+}
+
+.introA{
+    display: grid;
+    justify-items: center;
+    margin-bottom: 40px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.DirA{
+   text-decoration: underline;
+}
+
+.DireccionA{
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+    margin-top: 20px;
+
+}
+
+.botonesA{
+    margin-top: 30px;
+}

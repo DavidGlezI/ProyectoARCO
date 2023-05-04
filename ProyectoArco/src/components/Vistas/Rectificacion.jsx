@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, Outlet, Link, json, useNavigate, Navigate } from "react-router-dom"; 
-import './Rectificacion.css'
+import '../../styles.css';
 
 function Rectificacion(){
    const params = useParams();
@@ -43,11 +43,11 @@ function Rectificacion(){
     
     return (
         <> 
-        <div className="box">
+        <div className="boxRect">
             <form onSubmit={(e)=> handleSubmit(e)}>
-                        <div className='userAcceso'>
-                            <div className="intro">Datos de {dataTemp.user_fname} {dataTemp.user_first_lname} {dataTemp.user_second_lname}</div>
-                            <div className="datosPersonales">
+                        <div className='userRect'>
+                            <div className="introRect">Datos de {dataTemp.user_fname} {dataTemp.user_first_lname} {dataTemp.user_second_lname}</div>
+                            <div className="datosPersonalesRect">
 
                                 <div className="primeraMitad">
 
@@ -338,7 +338,7 @@ function Rectificacion(){
                                 
                             </div>
                         </div>
-              <div className="botones">
+              <div className="botonesRect">
               <button type="submit">
                   Modificar Datos
               </button>

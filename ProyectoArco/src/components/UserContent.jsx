@@ -1,4 +1,4 @@
-import './UserContent.css'
+import '../styles.css'
 import { useEffect, useState } from 'react';
 import ArcoBtn from './ArcoBtn';
 
@@ -25,7 +25,7 @@ export function UserContent({curpSearch, busqueda}){
 
 
     return(
-        <div className='box'>
+        <div className='boxUserContent'>
             {userData.map( data => {
                 return(
                     <>
@@ -45,7 +45,7 @@ export function UserContent({curpSearch, busqueda}){
                             <div >
                                 {data.curp}
                             </div>
-                            <div className='btn'>
+                            <div className='btnUserContent'>
                                 <ArcoBtn userId = {data.user_id}/>
                             </div>
                             

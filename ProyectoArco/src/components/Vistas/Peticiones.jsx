@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Outlet, Link } from "react-router-dom"; 
-import './Peticiones.css'
+import '../../styles.css';
 
 
 export function Peticiones(){
@@ -27,7 +27,7 @@ export function Peticiones(){
                 <div>Derecho</div>
                 <div>Creado</div>
         </div>
-        <div className='box'>
+        <div className='boxPet'>
             {peticiones.map( data => {
                 return(
                     <>
@@ -56,7 +56,7 @@ export function Peticiones(){
                             </div>
 
                             <div className="creado a">
-                                2:30:200
+                                {String(data.created_at).substring(0,19)}
                             </div>
 
                         </div>

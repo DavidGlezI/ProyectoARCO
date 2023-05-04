@@ -1,4 +1,4 @@
-import './Table.css'
+import '../styles.css'
 import { UserContent } from "./UserContent";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';

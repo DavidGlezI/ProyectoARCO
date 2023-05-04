@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, Outlet, Link } from "react-router-dom"; 
-import './Acceso.css'
+import '../../styles.css';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -57,13 +57,13 @@ function Acceso(){
     
     return (
         <> 
-        <div className="box" id="box">
+        <div className="boxA" id="box">
           <div className="intro">Datos de {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}</div>
 
           
-              <div className="datosPersonales"> 
+              <div className="datosPersonalesA"> 
 
-                <div className="info">
+                <div className="infoA">
                   <div>
                     Nombre: {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}
                   </div>
@@ -99,8 +99,8 @@ function Acceso(){
 
               </div>
 
-              <div className="Direccion">
-                  <div className="Dir">Direccion</div>
+              <div className="DireccionA">
+                  <div className="DirA">Direccion</div>
                     <div>
                       Pais: {userData.country} Estado: {userData.state} Ciudad: {userData.city}
                     </div>
@@ -115,7 +115,7 @@ function Acceso(){
               </div>  
 
 
-              <div className="botones">
+              <div className="botonesA">
                 <button onClick={()=> handleClickPeticion()}>Generar PDF</button>
                 
 

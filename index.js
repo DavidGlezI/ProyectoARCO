@@ -90,8 +90,10 @@ getUsers = async (req, res)=>{
         SELECT user_id, email, user_fname, user_first_lname, curp FROM users 
 
         WHERE (
+            is_deleted = 0 AND is_opposed = 0 AND
             TRUE
             ${search == undefined ? "" : ` AND INSTR(users.curp, ${JSON.stringify(search)})`}
+            
         )
         ORDER BY user_fname ${busqueda == "1" ? "asc" : "desc"}
         `
@@ -189,6 +191,22 @@ postPeticiones = async(req, res)=>{
     await db_query(`INSERT INTO solved_petitions(user_id, user_right) VALUES(${userid}, "${derecho}")`)
 }
 
+
+putEliminado = async(req, res)=>{
+    const {id} = req.params;
+    await db_query(`UPDATE users
+    SET is_deleted = 1,
+    deleted_at = CURRENT_TIMESTAMP
+     WHERE user_id = ${id};`)
+}
+
+putOpuesto = async(req, res)=>{
+    const {id} = req.params;
+    await db_query(`UPDATE users
+    SET is_opposed = 1
+     WHERE user_id = ${id};`)
+}
+
 // Hacer el front de esto
 getPeticiones = async (req, res)=>{
     
@@ -207,6 +225,8 @@ app.get("/api/userA/:id", getUserAccesoId);
 app.get("/api/user/:id", getUser);
 app.get("/api/peticiones", getPeticiones);
 app.post("/api/peticiones/:userid/:derecho", postPeticiones);
+app.put("/api/eliminado/:id", putEliminado);
+app.put("/api/opuesto/:id", putOpuesto);
 app.put("/api/userA/:id", putUserAccesoId);
 
 
