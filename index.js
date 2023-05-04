@@ -233,7 +233,7 @@ app.put("/api/userA/:id", putUserAccesoId);
 //  ***** Peticiones get que no manejamos ******
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, './ProyectoArco/dist', 'index.html'));
 })
 
 app.listen(PORT, ()=>{
