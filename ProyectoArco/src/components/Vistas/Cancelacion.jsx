@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useParams,Outlet, Link } from "react-router-dom"; 
+import { useParams,Outlet, Link, useNavigate } from "react-router-dom"; 
 import '../../styles.css';
 
 function Cancelacion(){
@@ -9,9 +9,23 @@ function Cancelacion(){
 
    const [userData, setUserData] = useState([]);
 
+   const [modal, setModal] = useState(false);
+
+   const navigate = useNavigate();
+
+
+   const toggleModal = ()=>{
+    setModal(!modal);
+
+   }
+
+
+
     function handleCancelacion(){
         fetch(`/api/eliminado/${userId}`, {method:"PUT"})
-        fetch(`/api/peticiones/${userId}/C`, {method:"POST"})
+        .then(fetch(`/api/peticiones/${userId}/C`, {method:"POST"}))
+        .then(toggleModal())
+        .then(navigate("/"));
     }
 
     useEffect(()=>{
@@ -34,7 +48,10 @@ function Cancelacion(){
 
     return (
         <>
-        <div className="boxCa">
+        
+        <div className="boxCa" style={{
+            filter: modal? 'blur(8px)' : ''
+        }}>
           <div className="introCa">Generar borrado lógico de {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}</div>
 
           
@@ -94,20 +111,35 @@ function Cancelacion(){
         
                     
             <div className="botonesCa">
-                <button onClick={handleCancelacion}>
-                    <Link to={`/`} style={{ textDecoration: 'none'}}>Borrar datos</Link>
-                </button>
+                <button onClick={toggleModal}>Borrar usuario</button>
                 <button>
                     <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link>
                     </button>
-
                 <div className="NotasCa">
                     <p>Agregar Notas</p>
                     <input type="text" />
                 </div>
             </div>
+            
+            
+            
 
         </div>
+        {modal && (
+                    <div className="modal">
+                        <div className="overlay"></div>
+                        <div className="modal-content">
+                            <h2>ATENCION</h2>
+                            <p>Se realizará un borrado lógico y 
+                            no se podrá acceder a este usuario en la página</p>
+                            
+                        </div>
+                        <button className="confirmar" onClick={handleCancelacion}>Confirmar Accion</button>
+                        <button className="cancelar" onClick={toggleModal}>Cancelar</button>
+                            
+                    </div>
+
+                )}
 
 
         
