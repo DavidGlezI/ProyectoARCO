@@ -171,12 +171,29 @@ getUser = async (req, res)=>{
     res.end();
 }
 
+postPeticiones = async(req, res)=>{
+    const {userid, derecho} = req.params;
+    await db_query(`INSERT INTO solved_petitions(user_id, user_right) VALUES(${userid}, "${derecho}")`)
+}
+
+// Hacer el front de esto
+getPeticiones = async (req, res)=>{
+    
+    const response = await db_query(`SELECT petition_id, solved_petitions.user_id, user_right, user_fname, user_first_lname, curp, solved_petitions.created_at
+    FROM solved_petitions
+    INNER JOIN
+    users on users.user_id = solved_petitions.user_id;`);
+    res.json(response);
+    res.end();
+}
+
 
 
 app.get("/api/users", getUsers);
 app.get("/api/userA/:id", getUserAccesoId);
 app.get("/api/user/:id", getUser);
-
+app.get("/api/peticiones", getPeticiones);
+app.post("/api/peticiones/:userid/:derecho", postPeticiones);
 app.put("/api/userA/:id", putUserAccesoId);
 
 

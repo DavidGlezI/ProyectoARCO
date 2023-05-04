@@ -1,7 +1,7 @@
 import './Table.css'
-import { SelectProvider } from "../SelectProvider";
 import { UserContent } from "./UserContent";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -33,6 +33,12 @@ export function Table(){
     
 
     return(
+        <>
+        <div className='navbar'>
+            <button>
+            <Link to={`/peticiones`} style={{ textDecoration: 'none'}}>Ver peticiones</Link>
+            </button>
+        </div>
         <div className="table">
             <div> Filtrar: 
             <button onClick={() => handleAz()}>A - Z</button>
@@ -50,5 +56,7 @@ export function Table(){
             </div>
                 <UserContent curpSearch = {curp} busqueda = {az}/>
         </div>
+
+        </>
     )
 }

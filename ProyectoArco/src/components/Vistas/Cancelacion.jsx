@@ -8,7 +8,9 @@ function Cancelacion(){
 
    const [userData, setUserData] = useState([]);
 
-    
+    function handleCancelacion(){
+        fetch(`/api/peticiones/${userId}/C`, {method:"POST"})
+    }
 
     useEffect(()=>{
         async function dataFetch(){
@@ -43,7 +45,9 @@ function Cancelacion(){
                         </div>
                 )
             })}
-            <button>Borrado Logico</button>
+            <button onClick={handleCancelacion}>
+            <Link to={`/`} style={{ textDecoration: 'none'}}>Borrar datos</Link>
+            </button>
             <button> <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link></button>
             <div className="Notas">
                 <p>Agregar Notas</p>

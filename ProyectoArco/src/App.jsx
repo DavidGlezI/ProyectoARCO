@@ -8,6 +8,7 @@ import Cancelacion from './components/Vistas/Cancelacion';
 import Oposicion from './components/Vistas/Oposicion';
 import Rectificacion from './components/Vistas/Rectificacion';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Peticiones from './components/Vistas/Peticiones';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <BrowserRouter>
             <Routes>
                 <Route path="/" element = {<Table/>}/>
+                <Route path="/peticiones" element = {<Peticiones/>}/>
                 <Route path="/Acceso/:userId" element={<Acceso/>}/>
                 <Route path="/Rectificacion/:userId" element={<Rectificacion/>}/>
                 <Route path="/Cancelacion/:userId" element={<Cancelacion/>}/>

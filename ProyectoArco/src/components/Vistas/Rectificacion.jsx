@@ -25,6 +25,7 @@ function Rectificacion(){
    function handleSubmit(e){
     e.preventDefault();
     fetch(`/api/userA/${userId}`, {method:"PUT",   body:JSON.stringify(data), headers:{"Content-Type":"application/json"}})
+    .then(fetch(`/api/peticiones/${userId}/R`, {method:"POST"}))
     .then(navigate("/"));
    }
 

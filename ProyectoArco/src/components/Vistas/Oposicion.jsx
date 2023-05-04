@@ -8,6 +8,10 @@ function Oposicion(){
 
    const [userData, setUserData] = useState([]);
 
+
+   function handleOposicion(){
+    fetch(`/api/peticiones/${userId}/O`, {method:"POST"})
+}
     
 
     useEffect(()=>{
@@ -43,7 +47,9 @@ function Oposicion(){
                         </div>
                 )
             })}
-            <button>Oposicion</button>
+            <button onClick={handleOposicion}>
+            <Link to={`/`} style={{ textDecoration: 'none'}}>Marcar Oposicion</Link>
+            </button>
             <button> <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link></button>
             <div className="Notas">
                 <p>Agregar Notas</p>

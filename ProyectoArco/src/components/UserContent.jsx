@@ -51,7 +51,6 @@ export function UserContent({curpSearch, busqueda}){
                             
                             
                         </div>
-                        <ColoredLine color="blue"/>
                         
                     </>     
                 )

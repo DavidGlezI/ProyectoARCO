@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Outlet, Link } from "react-router-dom"; 
 import './Acceso.css'
-import PDFContent from "./PDFContent";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
@@ -10,7 +9,10 @@ function Acceso(){
    const params = useParams();
    const userId= params.userId  
 
+
    const [userData, setUserData] = useState({});
+
+
 
    const exportPDF =() =>{
     const input = document.getElementById("box");
@@ -21,8 +23,16 @@ function Acceso(){
       const pdf = new jsPDF('p', 'mm', 'a4');
       pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
       pdf.save("informacion.pdf");
+
+      
     })
    }
+
+  function handleClickPeticion(){
+    exportPDF();
+    fetch(`/api/peticiones/${userId}/A`, {method:"POST"}) 
+  }
+
 
    let cliente = "";
       if(userData.is_client === 1){
@@ -49,6 +59,8 @@ function Acceso(){
         <> 
         <div className="box" id="box">
           <div className="intro">Datos de {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}</div>
+
+          
               <div className="datosPersonales"> 
 
                 <div className="info">
@@ -104,7 +116,7 @@ function Acceso(){
 
 
               <div className="botones">
-                <button onClick={()=> exportPDF()}>Generar PDF</button>
+                <button onClick={()=> handleClickPeticion()}>Generar PDF</button>
                 
 
                 <button>
