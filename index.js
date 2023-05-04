@@ -1,58 +1,71 @@
 
-
+const path = require("path");
 const express = require("express");
 const fs = require("fs");
 const bodyParser = require("body-parser");
+const mysql = require("mysql");
 
-const PORT = 3001;
-
-
-
+const PORT = process.env.PORT || 3001;
 
 const app = express();
-
-
-
-// endpoints
-
-
-app.get("/api", (req, res)=>{
-    res.json({
-        message: "Hello from the server side"
-    });
-});
-
-
-
-app.post("/api/characters", (req, res)=>{
-    console.log("El cuerpo de la peticion es:", req.body);
-    res.sendStatus(200);
-
-})
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-app.listen(PORT, ()=>{
-    console.log(`Server listening on ${PORT}`);
-});
+// endpoints
+
+
+// app.get("/api", (req, res)=>{
+//     res.json({
+//         message: "Hello from the server side"
+//     });
+// });
+
+
+
+// app.post("/api/characters", (req, res)=>{
+//     console.log("El cuerpo de la peticion es:", req.body);
+//     res.sendStatus(200);
+
+// })
+
+
+
+
+// Tenemos que ver qué usar para esta línea porque no jala
+// así con lo que tenía el profe
+// Sin esta línea jala en local, pero no se ha
+// encontrado la manera de que jale en Heroku
+app.use(express.static(path.resolve(__dirname, '/ProyectoArco/build')));
+
+
+
 
 
 
 
 // SQL
 
-const mysql = require("mysql");
 
-const database = mysql.createConnection({
-    host : "localhost",
-    user : "root",
-    password : "",
-    port : "3306",
-    database : "kueski"
 
-})
+if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
+    var database = mysql.createPool({
+        host : "us-cdbr-east-06.cleardb.net",
+        user : "b553cca6095053",
+        password : "3b8ea0c6",
+        database : "heroku_09dd07483fcb6fb"
+    });
+} else { 
+    var database = mysql.createConnection({
+        host : "localhost",
+        user : "root",
+        password : "",
+        port : "3306",
+        database : "kueski"
+    }); 
+}
+
+// module.exports = database;
 
 database.connect((error, s)=>{
     console.log(error);
@@ -67,7 +80,7 @@ function db_query(query){
             });
           });
     }catch(except){}
-  }
+}
 
 
 
@@ -197,5 +210,12 @@ app.post("/api/peticiones/:userid/:derecho", postPeticiones);
 app.put("/api/userA/:id", putUserAccesoId);
 
 
+//  ***** Peticiones get que no manejamos ******
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+})
 
+app.listen(PORT, ()=>{
+    console.log(`Server listening on ${PORT}`);
+});

@@ -1,11 +1,12 @@
 {
-  "name": "proyectoarcobackend",
+  "name": "proyectokueski",
   "version": "1.0.0",
   "description": "arco backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "cd ProyectoArco && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Equipo2",
   "license": "ISC",
