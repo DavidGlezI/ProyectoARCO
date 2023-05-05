@@ -1,67 +1,37 @@
+@font-face {
+    font-family: Inter-Regular;
+    src: url(./fonts/Inter-Regular.ttf);
+}
+
+body{
+    background-color: #fbfbfb;
+    font-family: Inter-Regular;
+}
+
+button{
+    cursor: pointer;
+
+}
+
 /* CSS DE APP */
 
 
 .titulo{
     text-align: center;
+    line-height: 90px;
     align-items: center;
     justify-content: center;
+    height: 90px;
+    width: auto;
+    background: linear-gradient( to right, #409EFF 0%, #BEDDFB 100%);
+      
 
 }
 
-
-
-/* CSS DE TABLE */
-
-
-.table_layout{
-    display: flex;
-    justify-content: center;
-    gap: 130px;
-    margin-top: 50px;
-    
+.titulo h1{
+    color: #fff  ;
+    font-family: Inter-Regular;
 }
-
-/*
-.navbar{
-    
-}
-*/
-.table{
-    display: grid;
-    grid-template-columns: 1200px;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* CSS DE USER CONTENT */
-*{
-    padding: 0;
-    margin: 0;
-}
-
-.UserContent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 120px;
-    margin-top: 50px;
-    height: 100%;
-}
-
-.btnUserContent{
-    display: grid;
-    align-items: center;
-    justify-content: center;
-}
-
-.boxUserContent{
-    display: grid;
-    align-items: center;
-    justify-content: center;
-}
-
-
 
 
 /* CSS DE RECTIFICACION*/
@@ -293,11 +263,6 @@
     padding: 20px 30px;
     
 }
-/*
-.NotasCa{
-
-}
-*/
 
 
 /* CSS DE ACCESO */

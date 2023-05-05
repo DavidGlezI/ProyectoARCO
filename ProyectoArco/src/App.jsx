@@ -13,7 +13,7 @@ function App() {
   
   return (
   <>
-    <div className="titulo">KUESKI TITULO</div>
+    <div className="titulo"><h1>DERECHOS ARCO R&D</h1></div>
     <BrowserRouter>
             <Routes>
                 <Route path="/" element = {<Table/>}/>
