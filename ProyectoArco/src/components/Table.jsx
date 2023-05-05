@@ -40,7 +40,7 @@ export function Table(){
             </button>
         </div>
         <div className="table">
-            <div> Filtrar: 
+            <div> Ordenar: 
             <button onClick={() => handleAz()}>A - Z</button>
             <button onClick={()=> handleZa()}>Z - A</button>
             </div>
