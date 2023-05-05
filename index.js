@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded());
 // así con lo que tenía el profe
 // Sin esta línea jala en local, pero no se ha
 // encontrado la manera de que jale en Heroku
-app.use(express.static(path.resolve(__dirname, '/ProyectoArco/build')));
+app.use(express.static(path.resolve(__dirname, '/ProyectoArco/dist')));
 
 
 
