@@ -66,71 +66,78 @@ function Acceso(){
     
     return (
         <>
+        <div className="fondo">
         <div className="boxA" id="box" style={{filter: modal? 'blur(8px)' : ''}}>
-          <div className="intro">Datos de {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}</div>
+          <div className="intro">
+            <span>Datos de {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}</span> </div>
 
           
               <div className="datosPersonalesA"> 
 
                 <div className="infoA">
                   <div>
-                    Nombre: {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}
+                    <span> Nombre:</span> {userData.user_fname} {userData.user_first_lname} {userData.user_second_lname}
                   </div>
                                   
                   <div>
-                    Fecha de nacimiento: {born}
+                    <span> Fecha de nacimiento:</span> {born}
                   </div>
 
                   <div>
-                    Nacionalidad: {userData.nationality}    Estado de nacimiento: {userData.state_of_birth}
+                    <span> Nacionalidad:</span> {userData.nationality}    <span> Estado de nacimiento: </span>{userData.state_of_birth}
                   </div>
 
                   <div>
-                    Genero: {userData.gender}
+                    <span> Genero: </span>{userData.gender}
                   </div>
 
                   <div>
-                    Telefono: {userData.phone_number}  Curp: {userData.curp}
+                    <span> Telefono: </span> {userData.phone_number} <span> Curp: </span>{userData.curp}
                   </div>
 
                   <div>
-                    E-mail: {userData.email}
+                    <span> E-mail: </span>{userData.email}
                   </div>
 
                   <div>
-                    Actividad economica: {userData.economic_activity}
+                    <span>Actividad economica: </span> {userData.economic_activity}
                   </div>
 
                   <div> 
-                    Es cliente: {cliente }
+                    <span> Es cliente: </span>{cliente }
                   </div>
                 </div>
 
               </div>
 
               <div className="DireccionA">
-                  <div className="DirA">Direccion</div>
+                  <div className="DirA">
+                    <span> Direccion</span></div>
                     <div>
-                      Pais: {userData.country} Estado: {userData.state} Ciudad: {userData.city}
+                      <span> Pais: </span>{userData.country} <span>Estado:</span>  {userData.state} <span> Ciudad:</span>{userData.city}
                     </div>
 
                     <div>
-                      Colonia: {userData.neighborhood} Codigo Postal: {userData.zip_code}
+                      <span> Colonia:</span> {userData.neighborhood} <span> Codigo Postal:</span> {userData.zip_code}
                     </div>
 
                     <div>
-                       Calle: {userData.country} Numero ext/int: {userData.ext_number}
+                       <span> Calle: </span>{userData.country} <span> Numero ext/int:</span> {userData.ext_number}
                     </div>
               </div>  
 
 
               <div className="botonesA">
-                <button onClick={toggleModal}>Generar PDF</button>
-                
 
-                <button>
+
+              <button className="btnA">
                   <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
                 </button>
+
+
+
+                <button onClick={toggleModal} className="btnA">Generar PDF</button>
+                
               </div>
 
         </div>
@@ -150,6 +157,7 @@ function Acceso(){
                     </div>
 
                 )}
+            </div>
             </>
     )
 }

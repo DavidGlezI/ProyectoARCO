@@ -104,10 +104,8 @@ return (
           </div> 
 
             <div className="botonesOp">
-
-            
-                <button onClick={toggleModal}>Marar Oposición</button>
-                <button> <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link></button>
+                <button onClick={toggleModal} className="btnOp">Marcar Oposición</button>
+                <button className="btnOp"> <Link to={`/`} style={{ textDecoration: 'none'}} >Cancelar/Regresar</Link></button>
                 <div className="Notas">
                     <p>Agregar Notas</p>
                     <input type="text" />

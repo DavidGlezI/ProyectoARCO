@@ -28,6 +28,9 @@ export function Peticiones(){
                 <div>Creado</div>
         </div>
         <div className='boxPet'>
+        <button className="petRegresar">
+            <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
+        </button>
             {peticiones.map( data => {
                 return(
                     <>
@@ -67,10 +70,7 @@ export function Peticiones(){
             
         </div>
 
-
-        <button>
-            <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
-        </button>
+        
         </>
     )
 }

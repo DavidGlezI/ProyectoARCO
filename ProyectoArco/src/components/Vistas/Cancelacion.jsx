@@ -113,8 +113,8 @@ function Cancelacion(){
         
                     
             <div className="botonesCa">
-                <button onClick={toggleModal}>Borrar usuario</button>
-                <button>
+                <button onClick={toggleModal} className="btnCa">Borrar usuario</button>
+                <button className="btnCa">
                     <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link>
                     </button>
                 <div className="NotasCa">

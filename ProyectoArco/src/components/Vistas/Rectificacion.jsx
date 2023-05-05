@@ -340,18 +340,25 @@ function Rectificacion(){
                             </div>
                         </div>
               <div className="botonesRect">
-              <button type="submit">
+              <button type="submit" className="btnSubmit">
                   Modificar Datos
               </button>
 
-              <button type="reset" onClick={()=>{setUserData(dataTemp)}}>
+              <button className="btnReset" type="reset" onClick={()=>{setUserData(dataTemp)}}>
                 Reset
               </button>
-
-              <button>
-                <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
-              </button>
               </div>
+
+              <div>
+                <button className="btnRectRegresar">
+                    <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
+                </button>
+
+              </div>
+              
+
+              
+              
               </form>
             </div>
             </>

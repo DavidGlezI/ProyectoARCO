@@ -57,7 +57,7 @@
 }
 
 .ordenarBTN button:hover{
-    background-color: #049dd90d;
+    background-color: #0d97ce3e;
 }
 
 .ordenarBTN button + button{
@@ -65,11 +65,14 @@
     
 }
 
+.ordenarBTN{
+    margin-left: 70px;
+}
+
 
 .filtro{
-    display: flex;
-    justify-content: left;
-    
+    position: absolute;
+    margin-left: 850px;
 }
 
 .filtro input{
