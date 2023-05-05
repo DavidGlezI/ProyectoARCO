@@ -1,8 +1,8 @@
-import './UserContent.css'
+import '../styles.css'
 import { useEffect, useState } from 'react';
 import ArcoBtn from './ArcoBtn';
 
-export function UserContent(){
+export function UserContent({curpSearch, busqueda}){
     const [userData, setUserData] = useState([]);
 
     const ColoredLine = ({ color }) => (
@@ -17,15 +17,15 @@ export function UserContent(){
 
     useEffect(()=>{
         async function dataFetch(){
-            const data = await(await fetch("/api/users")).json();
+            const data = await(await fetch(`/api/users?search=${curpSearch}&busqueda=${busqueda}`)).json();
             setUserData(data);
         }
         dataFetch();
-    }, [])
+    }, [curpSearch, busqueda])
 
 
     return(
-        <div className='box'>
+        <div className='boxUserContent'>
             {userData.map( data => {
                 return(
                     <>
@@ -45,13 +45,12 @@ export function UserContent(){
                             <div >
                                 {data.curp}
                             </div>
-                            <div className='btn'>
+                            <div className='btnUserContent'>
                                 <ArcoBtn userId = {data.user_id}/>
                             </div>
                             
                             
                         </div>
-                        <ColoredLine color="blue"/>
                         
                     </>     
                 )
