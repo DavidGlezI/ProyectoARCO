@@ -67,7 +67,7 @@ if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
 
 // module.exports = database;
 
-database.connect((error, s)=>{
+database.getConnection((error, s)=>{
     console.log(error);
 });
 
