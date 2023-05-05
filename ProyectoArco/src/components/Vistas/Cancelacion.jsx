@@ -117,10 +117,6 @@ function Cancelacion(){
                 <button className="btnCa">
                     <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link>
                     </button>
-                <div className="NotasCa">
-                    <p>Agregar Notas</p>
-                    <input type="text" />
-                </div>
             </div>
             
             
