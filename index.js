@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded());
 // así con lo que tenía el profe
 // Sin esta línea jala en local, pero no se ha
 // encontrado la manera de que jale en Heroku
-app.use(express.static(path.resolve(__dirname, '/ProyectoArco/build')));
+app.use(express.static(path.resolve(__dirname, './ProyectoArco/dist')));
 
 
 
@@ -50,10 +50,14 @@ app.use(express.static(path.resolve(__dirname, '/ProyectoArco/build')));
 
 if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
     var database = mysql.createPool({
+        connectionLimit:10,
         host : "us-cdbr-east-06.cleardb.net",
         user : "b553cca6095053",
         password : "3b8ea0c6",
         database : "heroku_09dd07483fcb6fb"
+    });
+    database.getConnection((error, s)=>{
+        console.log(error);
     });
 } else { 
     var database = mysql.createConnection({
@@ -62,14 +66,15 @@ if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
         password : "",
         port : "3306",
         database : "kueski"
-    }); 
+    });
+    database.connect((error, s)=>{
+        console.log(error);
+    });
 }
 
 // module.exports = database;
 
-database.connect((error, s)=>{
-    console.log(error);
-});
+
 
 function db_query(query){
     try{
@@ -233,7 +238,7 @@ app.put("/api/userA/:id", putUserAccesoId);
 //  ***** Peticiones get que no manejamos ******
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, './ProyectoArco/dist', 'index.html'));
 })
 
 app.listen(PORT, ()=>{
