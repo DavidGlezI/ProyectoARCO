@@ -21,7 +21,7 @@ export function UserContent({curpSearch, busqueda}){
             setUserData(data);
         }
         dataFetch();
-    }, [curpSearch, busqueda])
+    }, [curpSearch, busqueda, userData])
 
 
     return(

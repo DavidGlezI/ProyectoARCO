@@ -51,7 +51,7 @@ export function Table(){
                         <button onClick={()=> handleZa()}>Z - A</button>
                     </div>
                     <div className="filtro">
-                        <label> Filtro por CURP: </label>
+                        <label placeholder='curp'> Filtro por CURP: </label>
                         <input onChange = {(e) => setCurp(e.target.value)} value = {curp}></input>
                     </div>
                 </div>
