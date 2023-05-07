@@ -23,13 +23,13 @@ export function UserContent({curpSearch, busqueda}){
         dataFetch();
     }, [curpSearch, busqueda, userData])
 
-
+// Poner para que se actualice solo
     return(
         <div className='boxUserContent'>
             {userData.map( data => {
                 return(
                     <>
-                        <div className='UserContent'>
+                    <div className='UserContent'>
                             <div className="userId">
                                 {data.user_id}
                             </div>
@@ -48,10 +48,7 @@ export function UserContent({curpSearch, busqueda}){
                             <div className='btnUserContent'>
                                 <ArcoBtn userId = {data.user_id}/>
                             </div>
-                            
-                            
                         </div>
-                        
                     </>     
                 )
             })}

@@ -12,68 +12,33 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-// endpoints
 
-
-// app.get("/api", (req, res)=>{
-//     res.json({
-//         message: "Hello from the server side"
-//     });
-// });
-
-
-
-// app.post("/api/characters", (req, res)=>{
-//     console.log("El cuerpo de la peticion es:", req.body);
-//     res.sendStatus(200);
-
-// })
-
-
-
-
-// Tenemos que ver qué usar para esta línea porque no jala
-// así con lo que tenía el profe
-// Sin esta línea jala en local, pero no se ha
-// encontrado la manera de que jale en Heroku
 app.use(express.static(path.resolve(__dirname, './ProyectoArco/dist')));
-
-
-
-
-
-
-
-// SQL
-
-
-
-if (process.env.DATABASE_URL) {// o puede ser CLEARDB_DATABASE_URL
-    var database = mysql.createPool({
+/*
+// Correr en Heroku
+var database = mysql.createPool({
         connectionLimit:10,
         host : "us-cdbr-east-06.cleardb.net",
-        user : "b553cca6095053",
-        password : "3b8ea0c6",
-        database : "heroku_09dd07483fcb6fb"
-    });
-    database.getConnection((error, s)=>{
-        console.log(error);
-    });
-} else { 
-    var database = mysql.createConnection({
-        host : "localhost",
-        user : "root",
-        password : "",
-        port : "3306",
-        database : "kueski"
-    });
-    database.connect((error, s)=>{
-        console.log(error);
-    });
-}
+        user : "b617025a1fd365",
+        password : "817e6cde",
+        database : "heroku_4272ea2860ef700"
+});
+database.getConnection((error, s)=>{
+    console.log(error);
+});
 
-// module.exports = database;
-
+*/
+// Correr en Local
+var database = mysql.createConnection({
+    host : "localhost",
+    user : "root",
+    password : "",
+    port : "3306",
+    database : "kueski"
+});
+database.connect((error, s)=>{
+    console.log(error);
+});
 
 
 function db_query(query){
@@ -196,7 +161,6 @@ postPeticiones = async(req, res)=>{
     await db_query(`INSERT INTO solved_petitions(user_id, user_right) VALUES(${userid}, "${derecho}")`)
 }
 
-
 putEliminado = async(req, res)=>{
     const {id} = req.params;
     await db_query(`UPDATE users
@@ -212,9 +176,8 @@ putOpuesto = async(req, res)=>{
      WHERE user_id = ${id};`)
 }
 
-// Hacer el front de esto
+
 getPeticiones = async (req, res)=>{
-    
     const response = await db_query(`SELECT petition_id, solved_petitions.user_id, user_right, user_fname, user_first_lname, curp, solved_petitions.created_at
     FROM solved_petitions
     INNER JOIN
@@ -222,8 +185,6 @@ getPeticiones = async (req, res)=>{
     res.json(response);
     res.end();
 }
-
-
 
 app.get("/api/users", getUsers);
 app.get("/api/userA/:id", getUserAccesoId);

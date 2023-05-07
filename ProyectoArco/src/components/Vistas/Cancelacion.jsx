@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams,Outlet, Link, useNavigate } from "react-router-dom"; 
-import '../../styles.css';
+import './Cancelacion.css';
 
 function Cancelacion(){
    const params = useParams();

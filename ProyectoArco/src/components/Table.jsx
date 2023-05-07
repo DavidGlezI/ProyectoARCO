@@ -39,9 +39,6 @@ export function Table(){
                 <button>
                     <Link to={`/peticiones`} style={{ textDecoration: 'none'}}>Peticiones</Link>
                 </button>
-                <button disabled>
-                    Home
-                </button>
             </div>
             <div className="table">
                 <div className="tools">
@@ -57,12 +54,12 @@ export function Table(){
                 </div>
                 
                 <div className='table_layout'>
-                    <div>User id</div>
+                    <div>Id de Usuario</div>
                     <div>Email</div>
                     <div>Nombre</div>
                     <div>Apellido</div>
                     <div>CURP</div>
-                    <div>Accion</div>
+                    <div>Acción</div>
                 </div>
                     <UserContent curpSearch = {curp} busqueda = {az}/>
             </div>

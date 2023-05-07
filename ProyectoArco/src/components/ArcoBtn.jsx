@@ -51,7 +51,7 @@ export default function ArcoBtn({userId}) {
   return (
     <Box sx={{ minWidth: 100 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Right</InputLabel>
+        <InputLabel id="demo-simple-select-label">Derecho</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -64,15 +64,15 @@ export default function ArcoBtn({userId}) {
             </MenuItem>
 
             <MenuItem value={20}>
-                <Link to={`/Rectificacion/${userId}`} style={{ textDecoration: 'none' }}>Rectificacion</Link>
+                <Link to={`/Rectificacion/${userId}`} style={{ textDecoration: 'none' }}>Rectificación</Link>
             </MenuItem>
 
             <MenuItem value={30}>
-                <Link to= {`/Cancelacion/${userId}`} style={{ textDecoration: 'none' }}>Cancelacion</Link>
+                <Link to= {`/Cancelacion/${userId}`} style={{ textDecoration: 'none' }}>Cancelación</Link>
             </MenuItem>
 
             <MenuItem value={40}>
-                <Link to={`/Oposicion/${userId}`} style={{ textDecoration: 'none' }}>Oposicion</Link>
+                <Link to={`/Oposicion/${userId}`} style={{ textDecoration: 'none' }}>Oposición</Link>
             </MenuItem>
           
           <Outlet />
