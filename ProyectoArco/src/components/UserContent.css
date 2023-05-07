@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.UserContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 50px;
+    height: 100%;
+}
+
+
+.btnUserContent{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxUserContent{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,4 +1,4 @@
-import '../styles.css'
+import './UserContent.css'
 import { useEffect, useState } from 'react';
 import ArcoBtn from './ArcoBtn';
 
@@ -21,37 +21,34 @@ export function UserContent({curpSearch, busqueda}){
             setUserData(data);
         }
         dataFetch();
-    }, [curpSearch, busqueda])
+    }, [curpSearch, busqueda, userData])
 
-
+// Poner para que se actualice solo
     return(
         <div className='boxUserContent'>
             {userData.map( data => {
                 return(
                     <>
-                        <div className='UserContent'>
-                            <div >
+                    <div className='UserContent'>
+                            <div className="userId">
                                 {data.user_id}
                             </div>
-                            <div >
+                            <div className="email">
                                 {data.email}
                             </div>
-                            <div >
+                            <div className="firstName">
                                 {data.user_fname}
                             </div>
-                            <div >
+                            <div className="lastName">
                                 {data.user_first_lname}
                             </div>
-                            <div >
+                            <div className="curp">
                                 {data.curp}
                             </div>
                             <div className='btnUserContent'>
                                 <ArcoBtn userId = {data.user_id}/>
                             </div>
-                            
-                            
                         </div>
-                        
                     </>     
                 )
             })}

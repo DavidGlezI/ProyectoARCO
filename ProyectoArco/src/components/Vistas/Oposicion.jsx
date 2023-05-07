@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams,Outlet, Link, useNavigate } from "react-router-dom"; 
-import '../../styles.css';
+import './Oposicion.css';
 
 function Oposicion(){
    const params = useParams();
@@ -104,14 +104,8 @@ return (
           </div> 
 
             <div className="botonesOp">
-
-            
-                <button onClick={toggleModal}>Marar Oposición</button>
-                <button> <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link></button>
-                <div className="Notas">
-                    <p>Agregar Notas</p>
-                    <input type="text" />
-                </div>
+                <button onClick={toggleModal} className="btnOp">Marcar Oposición</button>
+                <button className="btnOp"> <Link to={`/`} style={{ textDecoration: 'none'}} >Cancelar/Regresar</Link></button>
             </div>
 
         </div>

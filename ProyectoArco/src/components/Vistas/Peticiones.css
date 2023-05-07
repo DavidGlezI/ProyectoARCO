@@ -1,0 +1,47 @@
+/*CSS DE PETICIONES*/
+
+.infoPeticion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 50px;
+    width:  100%;
+}
+
+.petid{
+    margin-left: 70px;
+}
+
+.userid{
+    margin-left: 50px;
+}
+
+.boxPet{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.peticiones_layout{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 20px;
+    
+}
+
+.petRegresar{
+    margin: 10px 0px 0px 15px;
+    background-color: #fafafb;
+    border: 1px solid #A8ABB2;
+    border-radius: 4px;
+    height: 30px;
+    width: 70px; 
+
+}
+.petRegresar:hover{
+    background-color: #0d97ce3e;
+
+}

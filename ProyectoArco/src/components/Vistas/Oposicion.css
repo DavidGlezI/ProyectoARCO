@@ -1,0 +1,64 @@
+
+/* CSS DE OPOSICION */
+.boxOp{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin-top: 40px;
+}
+
+.datosPersonalesOp{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.infoOp{
+    display: grid;
+    text-align: center;
+    gap: 20px;
+}
+
+.introOp{
+    display: grid;
+    justify-items: center;
+    margin-bottom: 40px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+.DirOp{
+   text-decoration: underline;
+}
+
+.DireccionOp{
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+    margin-top: 20px;
+
+}
+
+.botonesOp{
+    display: flex;
+    gap: 20px;
+    margin: 30px 0pc 30px 0px;
+}
+
+.btnOp{
+    background-color: #fafafb;
+    border: 1px solid #A8ABB2;
+    border-radius: 4px;
+    height: 40px;
+    width: 120px; 
+
+}
+.btnOp:hover{
+    background-color: #0d97ce3e;
+
+}
+
+

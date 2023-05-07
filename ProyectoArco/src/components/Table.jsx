@@ -1,4 +1,4 @@
-import '../styles.css'
+import './Table.css'
 import { UserContent } from "./UserContent";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -34,29 +34,36 @@ export function Table(){
 
     return(
         <>
-        <div className='navbar'>
-            <button>
-            <Link to={`/peticiones`} style={{ textDecoration: 'none'}}>Ver peticiones</Link>
-            </button>
-        </div>
-        <div className="table">
-            <div> Filtrar: 
-            <button onClick={() => handleAz()}>A - Z</button>
-            <button onClick={()=> handleZa()}>Z - A</button>
+        <div className="container">
+            <div className='navbar'>
+                <button>
+                    <Link to={`/peticiones`} style={{ textDecoration: 'none'}}>Peticiones</Link>
+                </button>
             </div>
-
-            <input onChange = {(e) => setCurp(e.target.value)} value = {curp}></input>
-            <div className='table_layout'>
-                <div>User id</div>
-                <div>Email</div>
-                <div>Nombre</div>
-                <div>Apellido</div>
-                <div>CURP</div>
-                <div>Accion</div>
+            <div className="table">
+                <div className="tools">
+                    <div className='ordenarBTN '> 
+                        <p>Ordenar:</p>
+                        <button onClick={() => handleAz()}>A - Z</button>
+                        <button onClick={()=> handleZa()}>Z - A</button>
+                    </div>
+                    <div className="filtro">
+                        <label placeholder='curp'> Filtro por CURP: </label>
+                        <input onChange = {(e) => setCurp(e.target.value)} value = {curp}></input>
+                    </div>
+                </div>
+                
+                <div className='table_layout'>
+                    <div>Id de Usuario</div>
+                    <div>Email</div>
+                    <div>Nombre</div>
+                    <div>Apellido</div>
+                    <div>CURP</div>
+                    <div>Acción</div>
+                </div>
+                    <UserContent curpSearch = {curp} busqueda = {az}/>
             </div>
-                <UserContent curpSearch = {curp} busqueda = {az}/>
         </div>
-
         </>
     )
 }

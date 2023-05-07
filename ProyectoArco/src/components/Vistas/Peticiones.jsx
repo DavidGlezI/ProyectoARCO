@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Outlet, Link } from "react-router-dom"; 
-import '../../styles.css';
+import './Peticiones.css';
 
 
 export function Peticiones(){
@@ -18,9 +18,12 @@ export function Peticiones(){
 
     return (
         <>
+        <button className="petRegresar">
+            <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
+        </button>
         <div className='peticiones_layout'>
-                <div>Peticion id</div>
-                <div>User Id</div>
+                <div>Petición id</div>
+                <div>Id de Usuario</div>
                 <div>Nombre</div>
                 <div>Apellido</div>
                 <div>CURP</div>
@@ -28,6 +31,7 @@ export function Peticiones(){
                 <div>Creado</div>
         </div>
         <div className='boxPet'>
+        
             {peticiones.map( data => {
                 return(
                     <>
@@ -58,19 +62,11 @@ export function Peticiones(){
                             <div className="creado a">
                                 {String(data.created_at).substring(0,19)}
                             </div>
-
-                        </div>
-                        
+                        </div>         
                     </>     
                 )
             })}
-            
-        </div>
-
-
-        <button>
-            <Link to={`/`} style={{ textDecoration: 'none'}}>Regresar</Link>
-        </button>
+        </div>     
         </>
     )
 }

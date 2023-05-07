@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams,Outlet, Link, useNavigate } from "react-router-dom"; 
-import '../../styles.css';
+import './Cancelacion.css';
 
 function Cancelacion(){
    const params = useParams();
@@ -113,14 +113,10 @@ function Cancelacion(){
         
                     
             <div className="botonesCa">
-                <button onClick={toggleModal}>Borrar usuario</button>
-                <button>
+                <button onClick={toggleModal} className="btnCa">Borrar usuario</button>
+                <button className="btnCa">
                     <Link to={`/`} style={{ textDecoration: 'none'}}>Cancelar/Regresar</Link>
                     </button>
-                <div className="NotasCa">
-                    <p>Agregar Notas</p>
-                    <input type="text" />
-                </div>
             </div>
             
             

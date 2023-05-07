@@ -1,0 +1,104 @@
+.container{
+    display: flex;
+}
+
+
+/* CSS DE BOTON PETICIONES*/
+.navbar{
+    align-items: left;
+    margin: 15px;
+}
+
+.navbar button{
+    display: block;
+    background-color: #fafafb;
+    border: 1px solid #A8ABB2;
+    border-radius: 4px;
+    height: 25px;
+    width: 80px;
+}
+
+
+.navbar button + button{
+    margin: 10px 0px 10px 0px;
+}
+
+/* CSS DE TABLE */
+
+.table{
+    display: grid;
+    grid-template-columns: 1200px;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Botones y filtro*/
+    
+.tools{
+    display: flex;
+    justify-content: space-between;
+    margin: 35px 0px 0px 0px;
+}
+
+.ordenarBTN{
+    display: flex;
+}
+
+.ordenarBTN p{
+    margin-right: 10px;
+}
+
+.ordenarBTN button{
+    background-color: #fafafb;
+    border: 1px solid #A8ABB2;
+    border-radius: 4px;
+    height: 20px;
+    width: 50px; 
+}
+
+.ordenarBTN button:hover{
+    background-color: #0d97ce3e;
+}
+
+.ordenarBTN button + button{
+    margin: 0px 10px 10px 10px;
+    
+}
+
+.ordenarBTN{
+    margin-left: 70px;
+}
+
+
+.filtro{
+    position: absolute;
+    margin-left: 850px;
+}
+
+.filtro input{
+    background-color: #fafafb;
+    border: 1px solid #A8ABB2;
+    border-radius: 4px;
+    margin-left: 10px;
+    width: 350px;
+    height: 15px;
+}
+
+.filtro input:hover{
+    background-color: #049dd90d;
+}
+
+.filtro input:focus{
+    background-color: #fafafd;
+    outline: none;
+}
+
+/*Headlines de la tabla*/
+
+.table_layout{
+    display: flex;
+    justify-content: center;
+    gap: 130px;
+    margin-top: 50px;
+    
+}

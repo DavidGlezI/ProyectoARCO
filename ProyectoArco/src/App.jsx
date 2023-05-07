@@ -7,13 +7,14 @@ import Oposicion from './components/Vistas/Oposicion';
 import Rectificacion from './components/Vistas/Rectificacion';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Peticiones from './components/Vistas/Peticiones';
-
-
+import logo from './public/37637.png';
 function App() {
   
   return (
   <>
-    <div className="titulo">KUESKI TITULO</div>
+    <div className="titulo">
+      <img className='foto' src={logo} alt={"/"} />
+    </div>
     <BrowserRouter>
             <Routes>
                 <Route path="/" element = {<Table/>}/>
